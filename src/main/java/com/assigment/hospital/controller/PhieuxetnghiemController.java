@@ -53,8 +53,12 @@ public class PhieuxetnghiemController {
     }
 
     @PostMapping("/xetnghiem")
-    public String xetnghiem() {
-        return "";
+    public String xetnghiem(@RequestParam("mabn") long mabn,
+                            @RequestParam("maxn") List<Long> maxn, 
+                            @RequestParam("ketqua") List<Integer> listketqua,
+                            @RequestParam("ghichu") List<String> listghichu) {
+        service.savePhieuxetnghiem(mabn, maxn, listketqua, listghichu);
+        return "success";
     }
 
 }

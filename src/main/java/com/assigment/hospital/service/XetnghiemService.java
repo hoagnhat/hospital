@@ -1,6 +1,7 @@
 package com.assigment.hospital.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.assigment.hospital.entity.XetnghiemEntity;
 import com.assigment.hospital.repository.XetnghiemRepository;
@@ -18,6 +19,15 @@ public class XetnghiemService {
     
     public List<XetnghiemEntity> getAll() {
         return repository.findAll();
+    }
+
+    public XetnghiemEntity getById(long maxn) {
+        Optional<XetnghiemEntity> optional = repository.findById(maxn);
+        if (optional.isPresent()) {
+            XetnghiemEntity xetnghiem = optional.get();
+            return xetnghiem;
+        }
+        return null;
     }
 
 }
