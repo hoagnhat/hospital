@@ -36,16 +36,19 @@ public class PhieuxetnghiemService {
     public void savePhieuxetnghiem(long mabn, List<Long> maxn, List<Integer> listketqua, List<String> listghichu) {
         BenhnhanEntity benhNhan = benhNhanService.getById(mabn);
         PhieuxetnghiemEntity phieuxetnghiem = new PhieuxetnghiemEntity();
+        long millis=System.currentTimeMillis();
+        Date ngayThucHien = new Date(millis);
+        phieuxetnghiem.setNgaythuchien(ngayThucHien);
 
         // TODO: Need to change with Current User
         NhanvienEntity nhanVien = nhanvienService.getById(2);
         // Set name for bac si chi dinh
-        phieuxetnghiem.setNhanvienByManv(nhanVien);
+        phieuxetnghiem.setManv(nhanVien.getManv());
+        
+        phieuxetnghiem.setMabn(benhNhan.getMaBn());
 
-        phieuxetnghiem.setBenhnhanByMabn(benhNhan);
         phieuxetnghiem = repository.saveAndFlush(phieuxetnghiem);
-        long millis=System.currentTimeMillis();
-        Date ngayChiDinh = new Date(millis);
+        
         for (int i = 0; i < maxn.size(); i++) {
             XetnghiemEntity xetnghiem = xetnghiemService.getById(maxn.get(i));
             PxnXnEntity pxnxn = new PxnXnEntity();
@@ -53,8 +56,16 @@ public class PhieuxetnghiemService {
             pxnxn.setMaxn(xetnghiem.getMaxn());
             pxnxn.setKetqua(listketqua.get(i));
             pxnxn.setGhichu(listghichu.get(i));
-            pxnxn.setNgaychidinh(ngayChiDinh);
+            
             pxnXnService.savePxnXn(pxnxn);
         }
+    }
+
+    public PhieuxetnghiemEntity getByMabn(long mabn) {
+        List<PhieuxetnghiemEntity> list = repository.findByMabn(mabn);
+        if (list.size() > 0) {
+            return list.get(list.size() - 1);
+        }
+        return null;
     }
 }

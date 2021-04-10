@@ -1,6 +1,5 @@
 package com.assigment.hospital.entity;
 
-import java.sql.Date;
 import java.util.Objects;
 
 import javax.persistence.Basic;
@@ -20,8 +19,7 @@ public class PxnXnEntity {
     private long maxn;
     private Integer ketqua;
     private String ghichu;
-    private Date ngaychidinh;
-    private Date ngaythuchien;
+    
     private XetnghiemEntity xetnghiemByMaxn;
     private PhieuxetnghiemEntity phieuxetnghiemByMapxn;
 
@@ -65,37 +63,17 @@ public class PxnXnEntity {
         this.ghichu = ghichu;
     }
 
-    @Basic
-    @Column(name = "ngaychidinh", nullable = true)
-    public Date getNgaychidinh() {
-        return ngaychidinh;
-    }
-
-    public void setNgaychidinh(Date ngaychidinh) {
-        this.ngaychidinh = ngaychidinh;
-    }
-
-    @Basic
-    @Column(name = "ngaythuchien", nullable = true)
-    public Date getNgaythuchien() {
-        return ngaythuchien;
-    }
-    
-    public void setNgaythuchien(Date ngaythuchien) {
-        this.ngaythuchien = ngaythuchien;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PxnXnEntity that = (PxnXnEntity) o;
-        return mapxn == that.mapxn && maxn == that.maxn && Objects.equals(ketqua, that.ketqua) && Objects.equals(ghichu, that.ghichu) && Objects.equals(ngaychidinh, that.ngaychidinh) && Objects.equals(ngaythuchien, that.ngaythuchien);
+        return mapxn == that.mapxn && maxn == that.maxn && Objects.equals(ketqua, that.ketqua) && Objects.equals(ghichu, that.ghichu);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mapxn, maxn, ketqua, ghichu, ngaychidinh, ngaythuchien);
+        return Objects.hash(mapxn, maxn, ketqua, ghichu);
     }
 
     @ManyToOne

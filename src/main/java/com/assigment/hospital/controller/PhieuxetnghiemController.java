@@ -5,6 +5,7 @@ import java.util.List;
 import com.assigment.hospital.entity.BenhnhanEntity;
 import com.assigment.hospital.entity.XetnghiemEntity;
 import com.assigment.hospital.service.BenhnhanService;
+import com.assigment.hospital.service.KetquaxetnghiemService;
 import com.assigment.hospital.service.PhieuxetnghiemService;
 import com.assigment.hospital.service.XetnghiemService;
 
@@ -20,13 +21,17 @@ public class PhieuxetnghiemController {
     private final BenhnhanService benhNhanService;
     private final PhieuxetnghiemService service;
     private final XetnghiemService xetNghiemService;
+    private final KetquaxetnghiemService kqService;
+
 
     public PhieuxetnghiemController(BenhnhanService benhNhanService, 
                                     PhieuxetnghiemService service, 
-                                    XetnghiemService xetNghiemService) {
+                                    XetnghiemService xetNghiemService,
+                                    KetquaxetnghiemService kqService) {
         this.benhNhanService = benhNhanService;
         this.service = service;
         this.xetNghiemService = xetNghiemService;
+        this.kqService = kqService;
     }
     
     @GetMapping("/phieuxetnghiem")
@@ -56,9 +61,14 @@ public class PhieuxetnghiemController {
     public String xetnghiem(@RequestParam("mabn") long mabn,
                             @RequestParam("maxn") List<Long> maxn, 
                             @RequestParam("ketqua") List<Integer> listketqua,
-                            @RequestParam("ghichu") List<String> listghichu) {
+                            @RequestParam("ghichu") List<String> listghichu,
+                            Model model) {
         service.savePhieuxetnghiem(mabn, maxn, listketqua, listghichu);
-        return "success";
+        model = kqService.showKetQua(mabn, model);
+        if (model.getAttribute("chuaxetnghiemkhambenh") != "" && model.getAttribute("chuaxetnghiemkhambenh") != null) {
+            return "chuaxetnghiemkhambenh";
+        }
+        return "ketquaxetnghiem";
     }
 
 }
