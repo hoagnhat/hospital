@@ -41,11 +41,21 @@ public class KetquaxetnghiemService {
     public Model showKetQua(long mabn, Model model) {
         BenhnhanEntity benhNhan = benhnhanService.getById(mabn);
         if (benhNhan != null) {
-            PhieuxetnghiemEntity phieuxetnghiem = phieuxetnghiemService.getByMabn(mabn);
-            NhanvienEntity bacSiXetnghiem = nhanvienService.getById(phieuxetnghiem.getManv());
-            PhieukhambenhEntity phieukhambenh = phieukhambenhService.getByMabn(mabn);
 
+            PhieukhambenhEntity phieukhambenh = phieukhambenhService.getByMabn(mabn);
+            if (phieukhambenh == null) {
+                model.addAttribute("chuaxetnghiemkhambenh", "benh nhan nay chua co phieu kham benh");
+                return model;
+            }
             NhanvienEntity bacSiChiDinh = nhanvienService.getById(phieukhambenh.getManv());
+
+            PhieuxetnghiemEntity phieuxetnghiem = phieuxetnghiemService.getByMabn(mabn);
+            if (phieuxetnghiem == null) {
+                model.addAttribute("chuaxetnghiemkhambenh", "benh nhan nay chua co phieu xet nghiem");
+                return model;
+            }
+            NhanvienEntity bacSiXetnghiem = nhanvienService.getById(phieuxetnghiem.getManv());
+            
             List<PxnXnEntity> listPxnXn = pxnXnService.getByMapxn(phieuxetnghiem.getMapxn());
             List<KetquaxetnghiemDTO> listKQXetnghiem = new ArrayList<KetquaxetnghiemDTO>();
             for (int i = 0; i < listPxnXn.size(); i++) {

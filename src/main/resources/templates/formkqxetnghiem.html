@@ -6,17 +6,17 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Trang chủ bệnh viện</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="shortcut icon" href="images/fevicon.ico.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="stylesheet" href="fontawesome-free-5.15.2-web/css/all.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/patient-infor.css">
-    <!-- <link rel="stylesheet" href="css/kqxn.css"> -->
-    <link rel="stylesheet" href="css/main-page.css">
-    <script src="jquery/jquery.min.js"></script>
-    <script src="jquery/popper.min.js"></script>
-    <script src="jquery/bootstrap.min.js"></script>
-    <script src="jquery/jquery.validate.min.js"></script>
+    <!-- <link rel="shortcut icon" th:href="@{images/fevicon.ico.png}" type="image/x-icon" /> -->
+    <!-- <link rel="apple-touch-icon" th:href="@{images/apple-touch-icon.png}"> -->
+    <link rel="stylesheet" th:href="@{fontawesome-free-5.15.2-web/css/all.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{bootstrap-4.5.3-dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/patient-infor.css}">
+    <!-- <link rel="stylesheet" th:href="@{css/kqxn.css"> -->
+    <link rel="stylesheet" th:href="@{css/main-page.css}">
+    <script th:src="@{jquery/jquery.min.js}"></script>
+    <script th:src="@{jquery/popper.min.js}"></script>
+    <script th:src="@{jquery/bootstrap.min.js}"></script>
+    <script th:src="@{jquery/jquery.validate.min.js}"></script>
 </head>
 
 <body style="background-image: url(images/hospital-background.jpg);">
@@ -95,59 +95,22 @@
             <section class="about text-center" id="about">
                 <div class="container">
                     <div class="row">
-                        <h3 class="m-auto mb-3">3 đời thần y</h3>
-                        <h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled</h4>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="single-about-detail clearfix">
-                                <div class="about-img">
-                                    <img class="img-responsive" src="img/item1.jpg" alt="">
-                                </div>
-                                <div class="about-details">
-                                    <div class="pentagon-text">
-                                        <h1>C</h1>
-                                    </div>
-                                    <h3>Bà con ai đang gặp vấn đề về xương khớp?</h3>
-                                    <p>Gọi ngay cho chúng tôi, tôi cam kết chữa khỏi 100% nếu không khỏi thì gọi lại cho
-                                        chúng tôi!!!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="single-about-detail">
-                                <div class="about-img">
-                                    <img class="img-responsive" src="img/item2.jpg" alt="">
-                                </div>
-                                <div class="about-details">
-                                    <div class="pentagon-text">
-                                        <h1>W</h1>
-                                    </div>
-
-                                    <h3>Sức khỏe là vấn đề ưu tiên hàng đầu</h3>
-                                    <p>Hãy đến với bệnh viện chúng tôi để được điều trị một cách hiệu quả nhất.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                            <div class="single-about-detail">
-                                <div class="about-img">
-                                    <img class="img-responsive" src="img/item3.jpg" alt="">
-                                </div>
-                                <div class="about-details">
-                                    <div class="pentagon-text">
-                                        <h1>3</h1>
-                                    </div>
-                                    <h3>Nhà tôi 3 đời chữa mọi loại bệnh</h3>
-                                    <p>Đến đời tôi là thần y chữa bách bệnh, bà con ai gặp vấn đề gì cứ gọi cho tôi.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <form action="/ketquaxetnghiem" method = "POST">
+                            <label for="mabn">Nhập mã bệnh nhân:</label>
+                            <input id="mabn" type="text" name="mabn" />
+                            <input type="submit" value="Xác nhận">
+                        </form>
+                        <button onclick="nhaplai()">Nhập lại</button>
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
+    <script>
+        function nhaplai() {
+            document.getElementById("mabn").value = "";
+        }
+    </script>
 </body>
 
 </html>

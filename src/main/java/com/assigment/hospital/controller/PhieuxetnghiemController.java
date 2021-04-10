@@ -64,7 +64,10 @@ public class PhieuxetnghiemController {
                             @RequestParam("ghichu") List<String> listghichu,
                             Model model) {
         service.savePhieuxetnghiem(mabn, maxn, listketqua, listghichu);
-        kqService.showKetQua(mabn, model);
+        model = kqService.showKetQua(mabn, model);
+        if (model.getAttribute("chuaxetnghiemkhambenh") != "" && model.getAttribute("chuaxetnghiemkhambenh") != null) {
+            return "chuaxetnghiemkhambenh";
+        }
         return "ketquaxetnghiem";
     }
 

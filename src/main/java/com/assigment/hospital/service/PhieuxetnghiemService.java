@@ -63,6 +63,9 @@ public class PhieuxetnghiemService {
 
     public PhieuxetnghiemEntity getByMabn(long mabn) {
         List<PhieuxetnghiemEntity> list = repository.findByMabn(mabn);
-        return list.get(list.size() - 1);
+        if (list.size() > 0) {
+            return list.get(list.size() - 1);
+        }
+        return null;
     }
 }
