@@ -26,7 +26,8 @@ public class BenhnhanController {
 
     @PostMapping("/tiepnhanbenhnhan")
     public String luuBenhNhan(BenhnhanEntity benhNhan) {
+        System.out.println("Vo day roi tiepnhanbenhnhan");
         service.luuBenhNhan(benhNhan);
-        return "success";
+        return "rediect:main-page";
     }
 }
