@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Thêm nhân sự</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="fontawesome-free-5.15.2-web/css/all.css">
     <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/kqxn.css">
@@ -39,38 +39,8 @@
         <!--end-header-->
     </div>
     <div class="row">
-        <div class="col-3 border" style="height: 700px;">
-            <ul class="nav sidebar-nav">
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Khám bệnh</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="patient-infor.html">Quản lí tiếp nhận bệnh nhân</a></li>
-                <li class="text-center"><a href="quanlykhambenh.html">Quản lí khám bệnh</a></li>
-                <li class="text-center"><a href="qlXetNghiem1.html">Quản lí xét nghiệm</a></li>
-                <li class="text-center"><a href="ketquaxetnghiem.html">Quản lí kết quả xét nghiệm</a></li>
-                <li class="text-center"><a href="qlVienPhi.html">Quản lí viện phí</a></li>
-                <li class="text-center"><a href="danhsachbenhnhannoitru.html">Quản lí nội trú</a></li>
-                <li class="text-center"><a href="dieutrinoitru.html">Quản lí điều trị nội trú</a></li>
-                <li class="text-center"><a href="quanlyhosobenhan.html">Quản lí bệnh án</a></li>
+        <div class="col-3 border" style="height: 700px;" th:insert="component/menu">
 
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Vật tư bệnh viện</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="qlNganHangMau.html">Quán lí ngân hàng máu</a></li>
-                <li class="text-center"><a href="qlDuoc.html">Quản lí dược</a></li>
-
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Nhân sự</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="quanlynhansu.html">Quản lí nhân sự</a></li>
-                <li class="text-center"><a href="#qlketoan">Quản lí tài chính kế toán</a></li>
-            </ul>
         </div>
 
         <div class="col-9">

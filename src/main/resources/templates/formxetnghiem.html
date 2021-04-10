@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trang chủ bệnh viện</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" th:href="@{images/fevicon.ico.png}" type="image/x-icon" /> -->
     <!-- <link rel="apple-touch-icon" th:href="@{images/apple-touch-icon.png}"> -->
     <link rel="stylesheet" th:href="@{fontawesome-free-5.15.2-web/css/all.css}">
@@ -56,38 +56,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 border" style="height: 700px;">
-            <ul class="nav sidebar-nav">
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Khám bệnh</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="/tiepnhanbenhnhan" class="fa fa-bed">Quản lí tiếp nhận bệnh nhân</a></li>
-                <li class="text-center"><a href="quanlykhambenh.html" class="fa fa-heartbeat">Quản lí khám bệnh</a></li>
-                <li class="text-center"><a href="qlXetNghiem1.html" class="fa fa-stethoscope">Quản lí xét nghiệm</a></li>
-                <li class="text-center"><a href="ketquaxetnghiem.html" class="fa fa-plus-square">Quản lí kết quả xét nghiệm</a></li>
-                <li class="text-center"><a href="qlVienPhi.html" class="fa fa-money-check">Quản lí viện phí</a></li>
-                <li class="text-center"><a href="danhsachbenhnhannoitru.html" class="fa fa-procedures">Quản lí nội trú</a></li>
-                <li class="text-center"><a href="dieutrinoitru.html" class="fa fa-clinic-medical">Quản lí điều trị nội trú</a></li>
-                <li class="text-center"><a href="quanlyhosobenhan.html" class="fa fa-hand-holding-medical">Quản lí bệnh án</a></li>
+        <div class="col-md-3 border" style="height: 700px;" th:insert="component/menu">
 
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Vật tư bệnh viện</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="qlNganHangMau.html" class="fa fa-vials">Quán lí ngân hàng máu</a></li>
-                <li class="text-center"><a href="qlDuoc.html" class="fa fa-capsules">Quản lí dược</a></li>
-
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Nhân sự</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="quanlynhansucuaha.html" class="fa fa-id-card">Quản lí nhân sự</a></li>
-                <li class="text-center"><a href="quanlytaichinh.html" class="fa fa-hand-holding-usd">Quản lí tài chính kế toán</a></li>
-            </ul>
         </div>
 
 
@@ -95,9 +65,9 @@
             <section class="about text-center" id="about">
                 <div class="container">
                     <div class="row">
-                        <form action="/phieuxetnghiem" method = "POST">
+                        <form action="/phieuxetnghiem" method="POST">
                             <label for="mabn">Nhập mã bệnh nhân:</label>
-                            <input id="mabn" type="text" name="mabn" />
+                            <input id="mabn" type="text" name="mabn">
                             <input type="submit" value="Xác nhận">
                         </form>
                         <button onclick="nhaplai()">Nhập lại</button>
