@@ -1,9 +1,7 @@
 package com.assigment.hospital.entity;
 
-import java.sql.Date;
 import java.util.Objects;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PhieuxetnghiemEntity {
     private long mapxn;
+    private NhanvienEntity nhanvienByManv;
     private BenhnhanEntity benhnhanByMabn;
 
     @Id
@@ -46,6 +45,16 @@ public class PhieuxetnghiemEntity {
     @Override
     public int hashCode() {
         return Objects.hash(mapxn);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "manv", referencedColumnName = "manv", nullable = false)
+    public NhanvienEntity getNhanvienByManv() {
+        return nhanvienByManv;
+    }
+
+    public void setNhanvienByManv(NhanvienEntity nhanvienByManv) {
+        this.nhanvienByManv = nhanvienByManv;
     }
 
     @ManyToOne

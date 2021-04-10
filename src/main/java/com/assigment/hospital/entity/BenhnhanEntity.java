@@ -35,7 +35,7 @@ public class BenhnhanEntity {
     private String lyDoNhapVien;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mabn", nullable = false)
     public long getMaBn() {
         return maBn;

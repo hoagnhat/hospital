@@ -1,8 +1,10 @@
 package com.assigment.hospital.controller;
 
 import com.assigment.hospital.entity.BenhnhanEntity;
+import com.assigment.hospital.entity.NhanvienEntity;
 import com.assigment.hospital.entity.PhieukhambenhEntity;
 import com.assigment.hospital.service.BenhnhanService;
+import com.assigment.hospital.service.NhanvienService;
 import com.assigment.hospital.service.PhieukhambenhService;
 
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PhieukhambenhController {
     
     private final PhieukhambenhService service;
+    private final NhanvienService nhanvienService;
     private final BenhnhanService benhnhanService;
 
-    public PhieukhambenhController(PhieukhambenhService service, BenhnhanService benhNhanService) {
+    public PhieukhambenhController(PhieukhambenhService service, 
+                                   BenhnhanService benhNhanService, 
+                                   NhanvienService nhanvienService) {
         this.service = service;
         this.benhnhanService = benhNhanService;
+        this.nhanvienService = nhanvienService;
     }
 
     @GetMapping("/phieukhambenh")
@@ -45,6 +51,12 @@ public class PhieukhambenhController {
     @PostMapping("/khambenh")
     public String khamBenh(@RequestParam("mabn") long mabn, PhieukhambenhEntity phieukhambenh) {
         BenhnhanEntity benhNhan = benhnhanService.getById(mabn);
+
+        // TODO: Need to change with Current User
+        NhanvienEntity nhanVien = nhanvienService.getById(2);
+        // Set name for bac si chi dinh
+        phieukhambenh.setNhanvienByManv(nhanVien);
+
         phieukhambenh.setBenhnhanByMabn(benhNhan);
         service.luuPhieuKhamBenh(phieukhambenh);
         return "formkhambenh";

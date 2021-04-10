@@ -28,6 +28,7 @@ public class PhieukhambenhEntity {
     private Date ngaytaikham;
     private Boolean cantaikham;
     private BenhnhanEntity benhnhanByMabn;
+    private NhanvienEntity nhanvienByManv;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -115,6 +116,16 @@ public class PhieukhambenhEntity {
 
     public void setBenhnhanByMabn(BenhnhanEntity benhnhanByMabn) {
         this.benhnhanByMabn = benhnhanByMabn;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "manv", referencedColumnName = "manv", nullable = false)
+    public NhanvienEntity getNhanvienByManv() {
+        return nhanvienByManv;
+    }
+
+    public void setNhanvienByManv(NhanvienEntity nhanvienByManv) {
+        this.nhanvienByManv = nhanvienByManv;
     }
     
 }
