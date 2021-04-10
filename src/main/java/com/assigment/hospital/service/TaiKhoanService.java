@@ -1,5 +1,6 @@
 package com.assigment.hospital.service;
 
+import com.assigment.hospital.dto.TaiKhoanDTO;
 import com.assigment.hospital.entity.KhoaEntity;
 import com.assigment.hospital.entity.NhanvienEntity;
 import com.assigment.hospital.entity.TaikhoanEntity;
@@ -8,6 +9,8 @@ import com.assigment.hospital.repository.NhanvienRepository;
 import com.assigment.hospital.repository.TaiKhoanRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class TaiKhoanService {
@@ -26,29 +29,35 @@ public class TaiKhoanService {
     }
 
 
-    public String danky(TaikhoanEntity taikhoanEntity) {
-        System.out.println("Alo");
-        if (taiKhoanRepository.findTaikhoanEntityByUsername(taikhoanEntity.getUsername()).isPresent()) {
-            System.out.println("Vo me if roi");
+    public String danky(TaiKhoanDTO taiKhoanDTO) {
+
+        if (taiKhoanRepository.findTaikhoanEntityByUsername(taiKhoanDTO.getUsername()).isPresent()) {
             return "redirect:404";
         }
 
-        //TODO DUMMY KHOA AND NHAN VIEN TO TEST
         KhoaEntity khoa = new KhoaEntity();
-        khoa.setTenKhoa("ABC");
-        khoa = khoaRepository.saveAndFlush(khoa);
+        Optional<KhoaEntity> optional = khoaRepository.findKhoaEntitiesByTenKhoa(taiKhoanDTO.getKhoa());
+        if (optional.isPresent()) {
+            khoa = optional.get();
+        } else {
+            khoa.setTenKhoa(taiKhoanDTO.getKhoa());
+            khoa = khoaRepository.saveAndFlush(khoa);
+        }
+
+
 
         NhanvienEntity nhanvien = new NhanvienEntity();
-        nhanvien.setHoten("abc");
+        nhanvien.setHoten(taiKhoanDTO.getTen());
         nhanvien.setKhoaByMakhoa(khoa);
         nhanvien = nhanvienRepository.saveAndFlush(nhanvien);
 
+        TaikhoanEntity taikhoanEntity = new TaikhoanEntity();
+        taikhoanEntity.setUsername(taiKhoanDTO.getUsername());
         taikhoanEntity.setNhanvienByManv(nhanvien);
-        taikhoanEntity.setPassword(passwordEncoder.encode(taikhoanEntity.getPassword()));
+        taikhoanEntity.setRole(taiKhoanDTO.getRole());
+        taikhoanEntity.setPassword(passwordEncoder.encode(taiKhoanDTO.getPassword()));
         taikhoanEntity.setManv(nhanvien.getManv());
-        taiKhoanRepository.saveAndFlush(taikhoanEntity);
-
-
+        taikhoanEntity = taiKhoanRepository.saveAndFlush(taikhoanEntity);
 
         return "redirect:index";
     }

@@ -9,6 +9,7 @@ import com.assigment.hospital.service.KetquaxetnghiemService;
 import com.assigment.hospital.service.PhieuxetnghiemService;
 import com.assigment.hospital.service.XetnghiemService;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,8 +63,9 @@ public class PhieuxetnghiemController {
                             @RequestParam("maxn") List<Long> maxn, 
                             @RequestParam("ketqua") List<Integer> listketqua,
                             @RequestParam("ghichu") List<String> listghichu,
+                            Authentication authResult,
                             Model model) {
-        service.savePhieuxetnghiem(mabn, maxn, listketqua, listghichu);
+        service.savePhieuxetnghiem(mabn, maxn, listketqua, listghichu, authResult);
         model = kqService.showKetQua(mabn, model);
         if (model.getAttribute("chuaxetnghiemkhambenh") != "" && model.getAttribute("chuaxetnghiemkhambenh") != null) {
             return "chuaxetnghiemkhambenh";

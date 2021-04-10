@@ -1,6 +1,8 @@
 package com.assigment.hospital.controller;
 
+import com.assigment.hospital.dto.TaiKhoanDTO;
 import com.assigment.hospital.entity.TaikhoanEntity;
+import com.assigment.hospital.security.UserPrincipal;
 import com.assigment.hospital.service.TaiKhoanService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -37,16 +39,15 @@ public class AppController {
     }
 
     @GetMapping("/dangki")
-    public String dangki(@ModelAttribute("TaiKhoan")TaikhoanEntity taikhoanEntity, Model model) {
-        model.addAttribute("TaiKhoan", new TaikhoanEntity());
+    public String dangki(@ModelAttribute("TaiKhoan") TaiKhoanDTO taiKhoanDTO, Model model) {
+        model.addAttribute("TaiKhoan", new TaiKhoanDTO());
         return "dangki";
     }
 
     @PostMapping("/dangki")
-    public String dangkipost(@ModelAttribute("TaiKhoan")TaikhoanEntity taikhoanEntity, Model model) {
-        model.addAttribute("TaiKhoan", taikhoanEntity);
-        System.out.println("Post chay vao roi");
-        return taiKhoanService.danky(taikhoanEntity);
+    public String dangkipost(@ModelAttribute("TaiKhoan") TaiKhoanDTO taiKhoanDTO, Model model) {
+        model.addAttribute("TaiKhoan", taiKhoanDTO);
+        return taiKhoanService.danky(taiKhoanDTO);
     }
 
     private String common(Authentication authResult) {
@@ -55,5 +56,18 @@ public class AppController {
             url = "main-page";
         }
         return url;
+    }
+
+    @GetMapping("/main-page")
+    public String mainPage(Authentication authResult) {
+        if (authResult==null) {
+            return "login";
+        }
+        return "redirect:index";
+    }
+
+    @GetMapping("/404")
+    public String error() {
+        return "404";
     }
 }

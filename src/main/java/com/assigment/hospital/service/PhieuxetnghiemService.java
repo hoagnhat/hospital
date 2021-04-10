@@ -3,13 +3,12 @@ package com.assigment.hospital.service;
 import java.sql.Date;
 import java.util.List;
 
-import com.assigment.hospital.entity.BenhnhanEntity;
-import com.assigment.hospital.entity.NhanvienEntity;
-import com.assigment.hospital.entity.PhieuxetnghiemEntity;
-import com.assigment.hospital.entity.PxnXnEntity;
-import com.assigment.hospital.entity.XetnghiemEntity;
+import com.assigment.hospital.entity.*;
 import com.assigment.hospital.repository.PhieuxetnghiemRepository;
 
+import com.assigment.hospital.repository.TaiKhoanRepository;
+import com.assigment.hospital.security.UserPrincipal;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,28 +19,34 @@ public class PhieuxetnghiemService {
     private final XetnghiemService xetnghiemService;
     private final PxnXnService pxnXnService;
     private final PhieuxetnghiemRepository repository;
+    private final TaiKhoanRepository taiKhoanRepository;
 
-    public PhieuxetnghiemService(BenhnhanService benhnhanService, 
-                                 PhieuxetnghiemRepository repository, 
+    public PhieuxetnghiemService(BenhnhanService benhnhanService,
+                                 PhieuxetnghiemRepository repository,
                                  XetnghiemService xetnghiemService,
                                  PxnXnService pxnXnService,
-                                 NhanvienService nhanvienService) {
+                                 NhanvienService nhanvienService,
+                                 TaiKhoanRepository taiKhoanRepository) {
         this.benhNhanService = benhnhanService;
         this.repository = repository;
         this.xetnghiemService = xetnghiemService;
         this.pxnXnService = pxnXnService;
         this.nhanvienService = nhanvienService;
+        this.taiKhoanRepository = taiKhoanRepository;
     }
 
-    public void savePhieuxetnghiem(long mabn, List<Long> maxn, List<Integer> listketqua, List<String> listghichu) {
+    public void savePhieuxetnghiem(long mabn, List<Long> maxn, List<Integer> listketqua, List<String> listghichu, Authentication authResult) {
         BenhnhanEntity benhNhan = benhNhanService.getById(mabn);
         PhieuxetnghiemEntity phieuxetnghiem = new PhieuxetnghiemEntity();
         long millis=System.currentTimeMillis();
         Date ngayThucHien = new Date(millis);
         phieuxetnghiem.setNgaythuchien(ngayThucHien);
 
+        UserPrincipal userPrincipal = (UserPrincipal) authResult.getPrincipal();
+        TaikhoanEntity taikhoan = taiKhoanRepository.findTaikhoanEntityByUsername(userPrincipal.getUsername()).get();
+
         // TODO: Need to change with Current User
-        NhanvienEntity nhanVien = nhanvienService.getById(2);
+        NhanvienEntity nhanVien = taikhoan.getNhanvienByManv();
         // Set name for bac si chi dinh
         phieuxetnghiem.setManv(nhanVien.getManv());
         
