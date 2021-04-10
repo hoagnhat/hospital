@@ -27,6 +27,9 @@ public class PhieukhambenhEntity {
     private String donthuoc;
     private Date ngaytaikham;
     private Boolean cantaikham;
+    private Date ngaychidinh;
+    private long mabn;
+    private long manv;
     private BenhnhanEntity benhnhanByMabn;
     private NhanvienEntity nhanvienByManv;
 
@@ -95,21 +98,51 @@ public class PhieukhambenhEntity {
         this.cantaikham = cantaikham;
     }
 
+    @Basic
+    @Column(name = "ngaychidinh", nullable = true)
+    public Date getNgaychidinh() {
+        return ngaychidinh;
+    }
+
+    public void setNgaychidinh(Date ngaychidinh) {
+        this.ngaychidinh = ngaychidinh;
+    }
+
+    @Basic
+    @Column(name = "mabn", nullable = false)
+    public long getMabn() {
+        return mabn;
+    }
+
+    public void setMabn(long mabn) {
+        this.mabn = mabn;
+    }
+
+    @Basic
+    @Column(name = "manv", nullable = false)
+    public long getManv() {
+        return manv;
+    }
+
+    public void setManv(long manv) {
+        this.manv = manv;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhieukhambenhEntity that = (PhieukhambenhEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(chuandoan, that.chuandoan) && Objects.equals(ketluan, that.ketluan) && Objects.equals(donthuoc, that.donthuoc) && Objects.equals(ngaytaikham, that.ngaytaikham) && Objects.equals(cantaikham, that.cantaikham);
+        return mabn == that.mabn && manv == that.manv && Objects.equals(id, that.id) && Objects.equals(chuandoan, that.chuandoan) && Objects.equals(ketluan, that.ketluan) && Objects.equals(donthuoc, that.donthuoc) && Objects.equals(ngaytaikham, that.ngaytaikham) && Objects.equals(cantaikham, that.cantaikham)  && Objects.equals(ngaychidinh, that.ngaychidinh);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, chuandoan, ketluan, donthuoc, ngaytaikham, cantaikham);
+        return Objects.hash(id, chuandoan, ketluan, donthuoc, ngaytaikham, cantaikham, ngaychidinh, mabn, manv);
     }
 
     @ManyToOne
-    @JoinColumn(name = "mabn", referencedColumnName = "mabn", nullable = false)
+    @JoinColumn(name = "mabn", referencedColumnName = "mabn", nullable = false, insertable = false, updatable = false)
     public BenhnhanEntity getBenhnhanByMabn() {
         return benhnhanByMabn;
     }
@@ -119,13 +152,21 @@ public class PhieukhambenhEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "manv", referencedColumnName = "manv", nullable = false)
+    @JoinColumn(name = "manv", referencedColumnName = "manv", nullable = false, insertable = false, updatable = false)
     public NhanvienEntity getNhanvienByManv() {
         return nhanvienByManv;
     }
 
     public void setNhanvienByManv(NhanvienEntity nhanvienByManv) {
         this.nhanvienByManv = nhanvienByManv;
+    }
+
+    @Override
+    public String toString() {
+        return "PhieukhambenhEntity [benhnhanByMabn=" + benhnhanByMabn + ", cantaikham=" + cantaikham + ", chuandoan="
+                + chuandoan + ", donthuoc=" + donthuoc + ", id=" + id + ", ketluan=" + ketluan + ", mabn=" + mabn
+                + ", manv=" + manv + ", ngaychidinh=" + ngaychidinh + ", ngaytaikham=" + ngaytaikham
+                + ", nhanvienByManv=" + nhanvienByManv + "]";
     }
     
 }

@@ -187,4 +187,15 @@ public class BenhnhanEntity {
     public int hashCode() {
         return Objects.hash(maBn, hoTen, ngaySinh, gioiTinh, soDienThoai, diaChi, ngayTiepNhan, noiDungKham, maKhoa, doiTuong, soTheBaoHiem, loaiBaoHiem, nhapVien, lyDoNhapVien);
     }
+
+    @Override
+    public String toString() {
+        return "BenhnhanEntity [diaChi=" + diaChi + ", doiTuong=" + doiTuong + ", gioiTinh=" + gioiTinh + ", hoTen="
+                + hoTen + ", loaiBaoHiem=" + loaiBaoHiem + ", lyDoNhapVien=" + lyDoNhapVien + ", maBn=" + maBn
+                + ", maKhoa=" + maKhoa + ", ngaySinh=" + ngaySinh + ", ngayTiepNhan=" + ngayTiepNhan + ", nhapVien="
+                + nhapVien + ", noiDungKham=" + noiDungKham + ", soDienThoai=" + soDienThoai + ", soTheBaoHiem="
+                + soTheBaoHiem + "]";
+    }
+
+    
 }

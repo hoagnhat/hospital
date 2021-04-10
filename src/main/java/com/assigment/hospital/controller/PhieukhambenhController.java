@@ -1,5 +1,7 @@
 package com.assigment.hospital.controller;
 
+import java.sql.Date;
+
 import com.assigment.hospital.entity.BenhnhanEntity;
 import com.assigment.hospital.entity.NhanvienEntity;
 import com.assigment.hospital.entity.PhieukhambenhEntity;
@@ -53,11 +55,14 @@ public class PhieukhambenhController {
         BenhnhanEntity benhNhan = benhnhanService.getById(mabn);
 
         // TODO: Need to change with Current User
-        NhanvienEntity nhanVien = nhanvienService.getById(2);
+        NhanvienEntity nhanVien = nhanvienService.getById(1);
         // Set name for bac si chi dinh
-        phieukhambenh.setNhanvienByManv(nhanVien);
+        phieukhambenh.setManv(nhanVien.getManv());
 
         phieukhambenh.setBenhnhanByMabn(benhNhan);
+        long millis=System.currentTimeMillis();
+        Date ngaychidinh = new Date(millis);
+        phieukhambenh.setNgaychidinh(ngaychidinh);
         service.luuPhieuKhamBenh(phieukhambenh);
         return "formkhambenh";
     }

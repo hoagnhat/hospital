@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PhieukhambenhRepository extends JpaRepository<PhieukhambenhEntity, Long> {
-    
+    PhieukhambenhEntity findByMabn(long mabn);
 }

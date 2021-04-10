@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PxnXnRepository extends JpaRepository<PxnXnEntity, PxnXnEntityPK> {
-    List<PxnXnRepository> findByMapxn(long maxn);
+    List<PxnXnEntity> findByMapxn(long mapxn);
 }
