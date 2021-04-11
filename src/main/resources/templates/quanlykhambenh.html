@@ -85,7 +85,7 @@
                         <h1 class="m-auto">Quản lý khám bệnh</h1>
                     </div>
                 </div>
-                <form action="/khambenh" method="POST">
+                <form th:action="@{/khambenh}" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <p th:text="'Bệnh nhân: ' + ${benhNhan.hoTen}"></p>
@@ -102,7 +102,7 @@
                             <p th:text="'Giới tính: ' + ${gioitinh}"></p>
                         </div>
                     </div>
-                    <input type="text" name="mabn" th:value="${benhNhan.maBn}">
+                    <input type="text" name="mabn" th:value="${benhNhan.maBn}" hidden />
                     <div class="form-group">
                         <label for="chuandoan">Chuẩn đoán</label>
                         <input type="text" name="chuandoan" class="form-control" id="chuandoan" placeholder="-Ho, sốt" required>

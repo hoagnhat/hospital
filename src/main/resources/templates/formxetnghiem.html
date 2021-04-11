@@ -65,7 +65,7 @@
             <section class="about text-center" id="about">
                 <div class="container">
                     <div class="row">
-                        <form action="/phieuxetnghiem" method="POST">
+                        <form th:action="@{/phieuxetnghiem}" method="POST">
                             <label for="mabn">Nhập mã bệnh nhân:</label>
                             <input id="mabn" type="text" name="mabn">
                             <input type="submit" value="Xác nhận">

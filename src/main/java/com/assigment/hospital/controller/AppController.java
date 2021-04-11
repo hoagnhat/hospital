@@ -53,17 +53,14 @@ public class AppController {
     private String common(Authentication authResult) {
         String url = "index";
         if (authResult != null) {
-            url = "main-page";
+            url = "redirect:main-page";
         }
         return url;
     }
 
     @GetMapping("/main-page")
-    public String mainPage(Authentication authResult) {
-        if (authResult==null) {
-            return "login";
-        }
-        return "redirect:index";
+    public String mainPage() {
+        return "main-page";
     }
 
     @GetMapping("/404")

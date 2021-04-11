@@ -46,7 +46,7 @@ public class PhieuxetnghiemController {
         List<XetnghiemEntity> listXetNghiem = xetNghiemService.getAll();
 
         if (benhNhan == null) {
-            return "404";
+            return "redirect:404";
         }
         model.addAttribute("benhNhan", benhNhan);
         if (benhNhan.getGioiTinh()) {

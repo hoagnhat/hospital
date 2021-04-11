@@ -56,8 +56,8 @@
                 <br>
                 <hr style="border-top: 1px solid;" class="mt-0">
 
-                <form id="form-qlttbn" action="/tiepnhanbenhnhan" method="POST" enctype="multipart/form-data">
-                    <input type="text" name="maBn" th:value="${benhNhan.maBn}">
+                <form id="form-qlttbn" th:action="@{/tiepnhanbenhnhan}" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="maBn" th:value="${benhNhan.maBn}" hidden />
                     <div class="form-row">
                         <label class="important">Họ tên:</label>
                         <div class="form-group col-6">
@@ -89,7 +89,7 @@
                     </div>
                     <br>
                     <hr style="border-top: 1px solid;" class="mt-0">
-                    <label for="ngayNhan" class="important">Ngày tiếp nhận:</label>
+                    <label for="ngayTiepNhan" class="important">Ngày tiếp nhận:</label>
                     <input type="date" class="w-50 ml-5" id="ngayTiepNhan" name="ngayTiepNhan">
                     <div class="form-row mt-2">
                         <label class="important mt-1 ml-1">Khám:</label>

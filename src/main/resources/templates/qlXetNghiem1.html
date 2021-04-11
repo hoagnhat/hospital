@@ -100,7 +100,7 @@
 
                         <div class="form-group col-6">
                             <strong>Nhập kết quả xét nghiệm</strong>
-                            <form action="/xetnghiem" method="POST">
+                            <form th:action="@{/xetnghiem}" method="POST">
                                 <table class="table table-bordered table-dark">
                                     <thead class="thead-light">
                                         <tr>
@@ -113,8 +113,8 @@
                                     </thead>
                                 
                                     <tbody id="ketquaxetnghiem"></tbody>
-                                    <input type="text" name="mabn" th:value="${benhNhan.maBn}">
-                                    <input type="submit" id="sendxetnghiem" value="Send"> 
+                                    <input type="text" name="mabn" th:value="${benhNhan.maBn}" hidden />
+                                    <input type="submit" id="sendxetnghiem" value="Send" hidden />
                                 </table>
                             </form>
                         </div>
