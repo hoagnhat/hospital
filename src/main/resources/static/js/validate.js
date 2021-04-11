@@ -22,9 +22,6 @@ $(document).ready(function () {
         },
 
 
-        submitHandler: function (form) {
-            form.submit();
-        }
     })
 
     $('#form-dtnt').validate({
@@ -44,9 +41,7 @@ $(document).ready(function () {
         },
 
 
-        submitHandler: function (form) {
-            form.submit();
-        }
+
     })
 
     $('#form-qlhsba').validate({
@@ -66,9 +61,6 @@ $(document).ready(function () {
         },
 
 
-        submitHandler: function (form) {
-            form.submit();
-        }
     })
 
     $('#form-qlns').validate({
@@ -88,9 +80,6 @@ $(document).ready(function () {
         },
 
 
-        submitHandler: function (form) {
-            form.submit();
-        }
     })
 
     $('#form-qltl').validate({
@@ -110,9 +99,6 @@ $(document).ready(function () {
         },
 
 
-        submitHandler: function (form) {
-            form.submit();
-        }
     })
 
     $('#form-qlttbn').validate({
@@ -162,8 +148,6 @@ $(document).ready(function () {
         },
 
 
-        submitHandler: function (form) {
-            form.submit();
-        }
+
     })
 });

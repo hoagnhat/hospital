@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trang chủ bệnh viện</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" th:href="@{images/fevicon.ico.png}" type="image/x-icon" /> -->
     <!-- <link rel="apple-touch-icon" th:href="@{images/apple-touch-icon.png}"> -->
     <link rel="stylesheet" th:href="@{fontawesome-free-5.15.2-web/css/all.css}">
@@ -95,9 +95,9 @@
             <section class="about text-center" id="about">
                 <div class="container">
                     <div class="row">
-                        <form action="/ketquaxetnghiem" method = "POST">
+                        <form th:action="@{/ketquaxetnghiem}" method="POST">
                             <label for="mabn">Nhập mã bệnh nhân:</label>
-                            <input id="mabn" type="text" name="mabn" />
+                            <input id="mabn" type="text" name="mabn">
                             <input type="submit" value="Xác nhận">
                         </form>
                         <button onclick="nhaplai()">Nhập lại</button>
