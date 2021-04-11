@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<title>Bệnh viện</title>
-    <link rel="shortcut icon" href="images/fevicon.ico.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/responsiveslides.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="js/responsiveslides.min.js"></script>
+	<link rel="shortcut icon" href="images/fevicon.ico.png" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/responsiveslides.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/responsiveslides.min.js"></script>
+	<link rel="stylesheet" href="fontawesome-free-5.15.2-web/css/all.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
 	<script>
 		// You can also use "$(window).load(function() {"
 		$(function () {
@@ -64,10 +66,9 @@
 	</div>
 	<!--End-image-slider---->
 	<div class="clear"> </div>
-	<div class="content-grids">
+	<!-- <div class="content-grids">
 		<div class="wrap">
 			<div class="section group">
-
 
 				<div class="listview_1_of_3 images_1_of_3">
 					<a href="login.html">
@@ -76,7 +77,7 @@
 						</div>
 						<div class="text list_1_of_2">
 							<h3>Y Tá, Y Vụ</h3>
-							<!-- <p>Register & Book Appointment</p> -->
+							
 							<div class="button"><span><a href="login.html">Đăng Nhập</a></span></div>
 						</div>
 					</a>
@@ -95,7 +96,6 @@
 					</a>
 				</div>
 
-
 				<div class="listview_1_of_3 images_1_of_3">
 					<a href="login.html">
 						<div class="listimg listimg_1_of_2">
@@ -107,6 +107,32 @@
 							<div class="button"><span><a href="login.html">Đăng Nhập</a></span></div>
 						</div>
 					</a>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="listimg listimg_1_of_2">
+						<img src="images/grid-img1.png">
+					</div>
+					<h5 class="card-title">Đăng nhập cho bác sỹ, y vụ, kế toán</h5>
+					<p class="card-text">Nơi đăng nhập dành bác sỹ, y tá các kiểu con đà điểu nhưng mà phải có tài khoản, nếu chưa có thì nhìn sang phải bạn nhó!!</p>
+					<a href="login.html" class="btn btn-primary">Đăng Nhập</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="listimg listimg_1_of_2">
+						<img src="images/grid-img3.png">
+					</div>
+					<h5 class="card-title">Chưa có tài khoản?</h5>
+					<p class="card-text">Đúng rồi!!! nếu bạn chưa có tài khoản thì đưa chuột vào đây nào, đăng ký ở đây bạn nhó !!!</p>
+					<a href="dangki.html" class="btn btn-primary">Đăng Ký</a>
 				</div>
 			</div>
 		</div>
@@ -141,10 +167,7 @@
 		</div>
 	</div>
 	<!--end-wrap-->
-	<footer>
-		<div class="footagan">
-			Copyright &copy; <a href="">Thảo Quang</a>
-		</div>
+	<footer th:insert="component/copyright">
 	</footer>
 </body>
 

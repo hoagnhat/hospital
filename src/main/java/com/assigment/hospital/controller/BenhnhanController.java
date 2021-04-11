@@ -19,6 +19,7 @@ public class BenhnhanController {
 
     @GetMapping("/tiepnhanbenhnhan")
     public String tiepNhanBenhNhan(Model model) {
+        System.out.println("Vo Get roi");
         BenhnhanEntity benhNhan = service.tiepNhanBenhNhan();
         model.addAttribute("benhNhan", benhNhan);
         return "patient-infor";        
@@ -26,7 +27,8 @@ public class BenhnhanController {
 
     @PostMapping("/tiepnhanbenhnhan")
     public String luuBenhNhan(BenhnhanEntity benhNhan) {
+        System.out.println("Vo day roi tiepnhanbenhnhan");
         service.luuBenhNhan(benhNhan);
-        return "success";
+        return "redirect:phieuxetnghiem";
     }
 }

@@ -24,15 +24,5 @@ $(document).ready(function() {
                 required: "Mật khẩu không được để trống!!!"
             }
         },
-
-
-        submitHandler: function(form) {
-            form.submit();
-            document.location.href = "main-page.html";
-        }
-
-
-        
-        
     })
 });

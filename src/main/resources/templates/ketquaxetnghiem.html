@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Kết quả xét nghiệm</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' th:href='@{main.css}'>
-    <script src='main.js'></script>
-    <!-- <link rel="shortcut icon" th:href="@{images/fevicon.ico.png}" type="image/x-icon" />
-    <link rel="apple-touch-icon" th:href="@{images/apple-touch-icon.png}"> -->
-    <link rel="stylesheet" th:href="@{fontawesome-free-5.15.2-web/css/all.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{bootstrap-4.5.3-dist/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{css/kqxn.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/patient-infor.css}" />
-    <script th:src="@{jquery/jquery.min.js}"></script>
-    <script th:src="@{jquery/popper.min.js}"></script>
-    <script th:src="@{jquery/bootstrap.min.js}"></script>
-    <script th:src="@{jquery/jquery.validate.min.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+    <link rel="shortcut icon" href="images/fevicon.ico.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="fontawesome-free-5.15.2-web/css/all.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/kqxn.css">
+    <link rel="stylesheet" type="text/css" href="css/patient-infor.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/popper.min.js"></script>
+    <script src="jquery/bootstrap.min.js"></script>
+    <script src="jquery/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -43,38 +43,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-3 border" style="height: 700px;">
-            <ul class="nav sidebar-nav">
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Khám bệnh</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="/tiepnhanbenhnhan" class="fa fa-bed">Quản lí tiếp nhận bệnh nhân</a></li>
-                <li class="text-center"><a href="/phieukhambenh" class="fa fa-heartbeat">Quản lí khám bệnh</a></li>
-                <li class="text-center"><a href="/phieuxetnghiem" class="fa fa-stethoscope">Quản lí xét nghiệm</a></li>
-                <li class="text-center"><a href="/ketquaxetnghiem" class="fa fa-plus-square">Quản lí kết quả xét nghiệm</a></li>
-                <li class="text-center"><a href="qlVienPhi.html" class="fa fa-money-check">Quản lí viện phí</a></li>
-                <li class="text-center"><a href="danhsachbenhnhannoitru.html" class="fa fa-procedures">Quản lí nội trú</a></li>
-                <li class="text-center"><a href="dieutrinoitru.html" class="fa fa-clinic-medical">Quản lí điều trị nội trú</a></li>
-                <li class="text-center"><a href="quanlyhosobenhan.html" class="fa fa-hand-holding-medical">Quản lí bệnh án</a></li>
+        <div class="col-md-3 border" style="height: 700px;" th:insert="component/menu">
 
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Vật tư bệnh viện</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="qlNganHangMau.html" class="fa fa-vials">Quán lí ngân hàng máu</a></li>
-                <li class="text-center"><a href="qlDuoc.html" class="fa fa-capsules">Quản lí dược</a></li>
-
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Nhân sự</a>
-                    </div>
-                </div>
-                <li class="text-center"><a href="quanlynhansucuaha.html" class="fa fa-id-card">Quản lí nhân sự</a></li>
-                <li class="text-center"><a href="quanlytaichinh.html" class="fa fa-hand-holding-usd">Quản lí tài chính kế toán</a></li>
-            </ul>
         </div>
 
         <div class="col-md-9">
@@ -87,40 +57,50 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <p th:text="'Mã số: ' + ${benhNhan.maBn}"></p>
+                            <label for="">Mã số</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="form-group col-md-3">
-                            <p th:text="'Bệnh nhân: ' + ${benhNhan.hoTen}"></p>
+                            <label for="">Bệnh nhân</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="form-group col-md-3">
-                            <p th:text="'Ngày sinh: ' + ${benhNhan.ngaySinh}"></p>
+                            <label for="">Ngày sinh</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="form-group col-md-3">
-                            <p th:text="'Giới tính: ' + ${gioitinh}"></p>
+                            <label for="">Giới tính</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <p th:text="'Mã phiếu xét nghiệm: ' + ${phieuxetnghiem.mapxn}"></p>
+                            <label for="">Mã số phiếu xét nghiệm</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <p th:text="'Thời gian chỉ định: ' + ${phieukhambenh.ngaychidinh}"></p>
+                            <label for="">Thời gian chỉ định</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="form-group col-md-4">
-                            <p th:text="'Nguời chỉ định: ' + ${bacSiChiDinh.hoten}"></p>
+                            <label for="">Người chỉ định</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="form-group col-md-4">
-                            <p th:text="'Nơi chỉ định: ' + ${benhNhan.maKhoa}"></p>
+                            <label for="">Nơi chỉ định</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <p th:text="'Thời gian thực hiện: ' + ${phieuxetnghiem.ngaythuchien}"></p>
+                            <label for="">Thời gian thực hiện</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="form-group col-md-4">
-                            <p th:text="'Nguời thực hiện: ' + ${bacSiXetnghiem.hoten}"></p>
+                            <label for="">Người thực hiện</label>
+                            <input type="text" class="form-control" id="">
                         </div>
                     </div>
 
@@ -137,20 +117,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:if="${listKQXetnghiem.empty}">
-                            <td>Không có xét nghiệm nào có sẵn</td>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>@mdo</td>
                         </tr>
-                        <tr th:each="xn : ${listKQXetnghiem}">
-                            <td><p th:text="${xn.maxn}"></p></td>
-                            <td><p th:text="${xn.tenxn}"></p></td>
-                            <td><p th:text="${xn.ketqua}"></p></td>
-                            <td><p th:text="${xn.donvi}"></p></td>
-                            <td><p th:text="${xn.ghichu}"></p></td>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>@mdo</td>
                         </tr>
                     </tbody>
                 </table>
                 <div>
-                    <button type="button" class="btn btn-primary"><a href="/" style="text-decoration: none; color: white;">Xác Nhận</a></button>
+                    <button type="submit" class="btn btn-primary">Xác Nhận</button>
                 </div>
             </div>
         </div>
