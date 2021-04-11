@@ -1,5 +1,6 @@
 package com.assigment.hospital.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.assigment.hospital.entity.PhieukhambenhEntity;
@@ -32,7 +33,11 @@ public class PhieukhambenhService {
     }
 
     public PhieukhambenhEntity getByMabn(long mabn) {
-        return repository.findByMabn(mabn);
+        List<PhieukhambenhEntity> list = repository.findByMabn(mabn);
+        if (list.size() > 0) {
+            return list.get(list.size() - 1);
+        }
+        return null;
     }
 
 }

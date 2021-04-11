@@ -26,6 +26,9 @@ public class BenhnhanController {
 
     @PostMapping("/tiepnhanbenhnhan")
     public String luuBenhNhan(BenhnhanEntity benhNhan) {
+        if (benhNhan.getNhapVien()==null) {
+            benhNhan.setNhapVien(false);
+        }
         service.luuBenhNhan(benhNhan);
         return "redirect:/main-page";
     }

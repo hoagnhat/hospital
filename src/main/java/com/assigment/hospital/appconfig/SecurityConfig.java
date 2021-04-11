@@ -3,15 +3,16 @@ package com.assigment.hospital.appconfig;
 import com.assigment.hospital.service.TaiKhoanDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -45,16 +46,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
             .antMatchers("/main-page")
-                .hasAnyRole("BACSI")
+                .hasAnyRole("BACSI", "YVU")
             .antMatchers("/tiepnhanbenhnhan")
+                .hasAnyRole("YVU")
+            .antMatchers("/hosobenhnhan")
+                .hasAnyRole("YVU")
+            .antMatchers("/capnhathoso")
+                .hasAnyRole("YVU")
+            .antMatchers("/timhoso")
+                .hasAnyRole("YVU")
+            .antMatchers("/danhsachbenhnhannoitru")
+                .hasAnyRole("YVU")
+            .antMatchers("/timkiembenhnhannoitru")
+                .hasAnyRole("YVU")
+            .antMatchers("/themlai")
+                .hasAnyRole("YVU")
+            .antMatchers("/xuylycapnhathoacxoa")
+                .hasAnyRole("YVU")
+            .antMatchers("/phieuxetnghiem")
+                .hasAnyRole("BACSI")
+            .antMatchers("/xetnghiem")
                 .hasAnyRole("BACSI")
             .antMatchers("/phieukhambenh")
                 .hasAnyRole("BACSI")
-            .antMatchers("/phieuxetnghiem")
+            .antMatchers("/khambenh")
                 .hasAnyRole("BACSI")
             .antMatchers("/ketquaxetnghiem")
                 .hasAnyRole("BACSI")
-            .antMatchers("/hosobenhnhan")
+            .antMatchers("/dieutrinoitru")
+                .hasAnyRole("BACSI")
+            .antMatchers("/updatedieutrinoitru")
+                .hasAnyRole("BACSI")
+                .antMatchers("/findthuoc")
                 .hasAnyRole("BACSI")
             .anyRequest()
                 .permitAll()
@@ -67,11 +90,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/")
+            .and()
+                .exceptionHandling()
+                .accessDeniedPage("/Access_Denied");;
 
     }
-
-
-
-
 }

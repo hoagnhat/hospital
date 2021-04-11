@@ -3,7 +3,9 @@ package com.assigment.hospital.controller;
 import com.assigment.hospital.dto.TaiKhoanDTO;
 import com.assigment.hospital.entity.TaikhoanEntity;
 import com.assigment.hospital.security.UserPrincipal;
+import com.assigment.hospital.service.DSBNService;
 import com.assigment.hospital.service.TaiKhoanService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AppController {
 
+    @Autowired
+    private DSBNService service;
+
     private final TaiKhoanService taiKhoanService;
 
     public AppController(TaiKhoanService taiKhoanService) {
@@ -22,6 +27,8 @@ public class AppController {
 
     @GetMapping("/")
     public String rootURL(Authentication authResult) {
+        service.list_khoa().forEach(System.out::println);
+        service.list_phong().forEach(System.out::println);
         return common(authResult);
     }
 
