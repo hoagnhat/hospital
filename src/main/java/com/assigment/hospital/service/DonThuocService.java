@@ -1,6 +1,7 @@
 package com.assigment.hospital.service;
 
 import com.assigment.hospital.repository.DonthuocRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

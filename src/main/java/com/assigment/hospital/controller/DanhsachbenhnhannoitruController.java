@@ -2,6 +2,7 @@ package com.assigment.hospital.controller;
 
 import com.assigment.hospital.entity.BenhnhanEntity;
 import com.assigment.hospital.repository.BenhnhanRepository;
+import com.assigment.hospital.service.BenhnhanService;
 import com.assigment.hospital.service.DSBNService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +17,19 @@ import java.util.List;
 public class DanhsachbenhnhannoitruController {
 
     private final DSBNService dsbnService;
+    private final BenhnhanService benhnhanService;
 
     private final BenhnhanRepository benhnhanRepository;
 
-    public DanhsachbenhnhannoitruController(DSBNService dsbnService, BenhnhanRepository benhnhanRepository) {
+    public DanhsachbenhnhannoitruController(DSBNService dsbnService, BenhnhanService benhnhanService, BenhnhanRepository benhnhanRepository) {
         this.dsbnService = dsbnService;
+        this.benhnhanService = benhnhanService;
         this.benhnhanRepository = benhnhanRepository;
     }
 
     @GetMapping("/danhsachbenhnhannoitru")
     public String danhsachbenhnhannoitru(Model model) {
-
+        benhnhanService.xoaBenhNhanNull();
         model.addAttribute("listbn", dsbnService.dsbnnt());
         model.addAttribute("list_khoa", dsbnService.list_khoa());
         model.addAttribute("list_phong", dsbnService.list_phong());
