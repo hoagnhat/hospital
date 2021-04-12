@@ -29,15 +29,15 @@
         <div class="wrap">
             <!--start-logo-->
             <div class="logo">
-                <a href="index.html" style="font-size: 30px;">Hệ thống quản lý bệnh viện</a>
+                <a th:href="@{/}" style="font-size: 30px;">Hệ thống quản lý bệnh viện</a>
             </div>
             <!--end-logo-->
             <!--start-top-nav-->
             <div class="top-nav">
                 <ul>
-                    <li class="active"><a href="index.html">Trang Chủ</a></li>
+                    <li class="active"><a th:href="@{/}">Trang Chủ</a></li>
 
-                    <li><a href="">Liên Hệ</a></li>
+                    <li><a th:href="@{/}">Liên Hệ</a></li>
                 </ul>
             </div>
             <div class="clear"> </div>
@@ -136,11 +136,11 @@
                 </form>
 
 
-                <div class="form-inline">
-                    <form th:action= "@{/themlai}" method="get">
+                <div class="form-inline" >
+                    <form th:action= "@{/themlai}" method="get" >
                         <div>
                             <input type="text" th:value="${themlai}" hidden name="themlai">
-                            <button type="submit" class="btn btn-primary my-1 mr-sm-2" th:text="${themlai} ? 'Xóa bệnh nhân' : 'Thêm lại' " ></button>
+                            <button type="submit" class="btn btn-primary my-1 mr-sm-2" th:text="${themlai} ? 'Xóa bệnh nhân' : 'Thêm lại' " th:hidden="${themlai}"> </button>
                         </div>
                     </form>
 
@@ -148,6 +148,9 @@
             </div>
         </div>
     </div>
+    <script>
+
+    </script>
 
 </body>
 

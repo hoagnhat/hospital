@@ -25,23 +25,23 @@
         <div class="wrap">
             <!--start-logo-->
             <div class="logo">
-                <a href="index.html" style="font-size: 30px;">Hệ thống quản lý bệnh viện</a>
+                <a th:href="@{/}" style="font-size: 30px;">Hệ thống quản lý bệnh viện</a>
             </div>
             <!--end-logo-->
             <!--start-top-nav-->
             <div class="top-nav">
                 <ul>
-                    <li class="active"><a href="index.html">Trang Chủ</a></li>
+                    <li class="active"><a th:href="@{/}">Trang Chủ</a></li>
 
-                    <li><a href="">Liên Hệ</a></li>
+                    <li><a th:href="@{/}">Liên Hệ</a></li>
                     <li>
                         <div class="dropdown p-3 pl-5" id="user_icon">
                             <p class="fas fa-user"></p>
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"></button>
                             <div class="dropdown-menu dropdown-menu-right">
-                              <a href="edit.html" class="dropdown-item"><i class="fas fa-user"></i> User Profile</a>
+                              <a th:href="@{/}" class="dropdown-item"><i class="fas fa-user"></i> User Profile</a>
                               <div class="dropdown-divider"></div>
-                              <a href="Login.html" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                              <a th:href="@{/logout}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
                             </div>
                           </div>
                     </li>

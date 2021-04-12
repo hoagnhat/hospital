@@ -27,8 +27,6 @@ public class AppController {
 
     @GetMapping("/")
     public String rootURL(Authentication authResult) {
-        service.list_khoa().forEach(System.out::println);
-        service.list_phong().forEach(System.out::println);
         return common(authResult);
     }
 

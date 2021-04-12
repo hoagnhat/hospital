@@ -41,7 +41,6 @@ public class DieutrinoitruController {
         List<DonthuocEntity> list = donthuocRepository.findAllByMabn(mabn);
         model.addAttribute("list_dt", list);
         model.addAttribute("bn", optional.get());
-        System.out.println(optional.get().getMaBn());
         return "dieutrinoitru";
     }
 
@@ -54,7 +53,6 @@ public class DieutrinoitruController {
             @RequestParam List<Integer> tien,
 //            @RequestParam List<String> isAdded,
             Model model) {
-        System.out.println("Xem thu co get duoc ma benh nhan khong: " + mabn);
         Optional<BenhnhanEntity> optional = benhnhanRepository.findById(mabn);
         if (!optional.isPresent()) {
             return "redirect:404";
